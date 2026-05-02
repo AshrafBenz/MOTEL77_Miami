@@ -86,11 +86,11 @@ nav {
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(160deg, #0d2d47 0%, #1a5a6e 30%, #c85a3a 68%, #e8a030 100%);
+  background: none;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.12) 55%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.15) 100%);
 }
 /* PHOTO HERO — replace .hero-bg with: <img src="miami-night.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"> */
 
@@ -556,7 +556,7 @@ footer { background: var(--navy); color: white; }
 .footer-social { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
 .social-btn {
   width: 38px; height: 38px; border-radius: 50%;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+  /*background: rgba(1, 213, 255, 0.699);*/ /*border: 1px solid rgba(255,255,255,0.14);*/
   display: flex; align-items: center; justify-content: center;
   font-size: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none;
 }
@@ -602,6 +602,143 @@ footer { background: var(--navy); color: white; }
 ============================================= */
 .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* =============================================
+   REVIEW SUBMISSION SYSTEM
+============================================= */
+.submit-review-section {
+  background: var(--sand); padding: 80px 50px 0;
+}
+.submit-review-section .section-label { margin-bottom: 12px; }
+.submit-review-section h2 { margin-bottom: 10px; }
+.submit-review-section > p { font-size: 15px; color: var(--muted); margin-bottom: 40px; }
+
+.review-submit-card {
+  background: white; border-radius: 20px; padding: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+  border: 2px solid rgba(26,173,168,0.12);
+  max-width: 800px; margin: 0 auto 60px;
+}
+
+/* Star rating picker */
+.star-picker { display: flex; gap: 6px; margin-bottom: 4px; flex-direction: row-reverse; justify-content: flex-end; }
+.star-picker input { display: none; }
+.star-picker label {
+  font-size: 32px; cursor: pointer; color: #ddd;
+  transition: color 0.15s; line-height: 1;
+}
+.star-picker input:checked ~ label,
+.star-picker label:hover,
+.star-picker label:hover ~ label { color: #fbbc04; }
+.star-picker:has(input:checked) label { color: #ddd; }
+.star-picker input:checked ~ label { color: #fbbc04; }
+.star-hint { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 16px; }
+
+/* Photo upload */
+.photo-upload-area {
+  border: 2px dashed rgba(26,173,168,0.35); border-radius: 14px;
+  padding: 28px; text-align: center; cursor: pointer;
+  background: rgba(26,173,168,0.03); transition: all 0.25s;
+  position: relative;
+}
+.photo-upload-area:hover { border-color: var(--teal); background: rgba(26,173,168,0.06); }
+.photo-upload-area input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.photo-upload-icon { font-size: 32px; margin-bottom: 8px; }
+.photo-upload-text { font-size: 14px; font-weight: 700; color: var(--navy); }
+.photo-upload-hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.photo-preview-grid {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;
+}
+.photo-preview-item {
+  width: 80px; height: 80px; border-radius: 10px; overflow: hidden;
+  position: relative; border: 2px solid rgba(26,173,168,0.2);
+}
+.photo-preview-item img { width: 100%; height: 100%; object-fit: cover; }
+.photo-preview-item .remove-ph {
+  position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.6);
+  color: white; border-radius: 50%; width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; cursor: pointer; font-weight: 800; line-height: 1;
+}
+
+/* Review success */
+.review-submit-success {
+  display: none; text-align: center; padding: 30px 20px;
+}
+.review-submit-success .check { font-size: 52px; margin-bottom: 14px; }
+.review-submit-success h4 { font-family: 'Pacifico', cursive; font-size: 24px; color: var(--teal); margin-bottom: 8px; }
+.review-submit-success p { font-size: 15px; color: var(--muted); }
+
+/* User review cards in grid */
+.review-card.user-review { border-left-color: var(--teal); }
+.review-card.user-review .review-source { color: var(--coral); }
+.review-photos {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;
+}
+.review-photo {
+  width: 72px; height: 72px; border-radius: 8px; overflow: hidden;
+  border: 2px solid rgba(26,173,168,0.2); cursor: pointer; flex-shrink: 0;
+}
+.review-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.review-photo:hover img { transform: scale(1.08); }
+
+/* Lightbox */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.lightbox-close {
+  position: absolute; top: 20px; right: 24px; color: white; font-size: 36px;
+  cursor: pointer; line-height: 1; font-weight: 300; transition: color 0.2s;
+}
+.lightbox-close:hover { color: var(--gold); }
+
+/* Empty state */
+.reviews-empty {
+  grid-column: 1/-1; text-align: center; padding: 40px;
+  color: var(--muted); font-size: 15px; font-style: italic;
+}
+
+/* User reviews header */
+.user-reviews-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 24px; margin-top: 20px;
+}
+.user-reviews-title {
+  font-family: 'Pacifico', cursive; font-size: 22px; color: var(--navy);
+}
+.user-reviews-count {
+  background: rgba(26,173,168,0.1); color: var(--teal);
+  font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 20px;
+}
+.sort-bar {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.sort-btn {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 7px 16px; border-radius: 20px; cursor: pointer;
+  border: 2px solid rgba(26,173,168,0.2); background: white;
+  color: var(--navy); transition: all 0.2s;
+}
+.sort-btn:hover, .sort-btn.active { background: var(--teal); color: white; border-color: var(--teal); }
+
+/* Divider between Google and user reviews */
+.reviews-divider {
+  display: flex; align-items: center; gap: 16px;
+  margin: 40px 0 32px; padding: 0;
+}
+.reviews-divider span {
+  font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap;
+}
+.reviews-divider::before, .reviews-divider::after {
+  content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.1);
+}
 
 /* =============================================
    RESPONSIVE
@@ -693,8 +830,8 @@ footer { background: var(--navy); color: white; }
      HERO
 ============================================= -->
 <section class="hero">
-  <!-- 📸 PHOTO HERO: Replace .hero-bg with <img src="miami-night.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"> -->
-  <div class="hero-bg"></div>
+  <img src="/Motel-77.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" alt="Motel 77 Miami at night">
+  <div class="hero-bg" style="background:none;"></div>
 
   <div class="sign-frame">
     <div class="sign-box">
@@ -803,25 +940,20 @@ footer { background: var(--navy); color: white; }
   <h2>See it for <em>yourself.</em></h2>
   <div class="gallery-grid">
     <div class="gallery-item big">
-      <!-- 📸 Replace .photo-ph with <img src="facade.jpg"> -->
-      <div class="photo-ph"><div class="ico">🏨</div><div class="lbl">📸 Façade / Exterior</div><div class="hint">Replace with real photo</div></div>
+      <img src="/BestRoom.png" alt="Luxury Suite — Motel 77 Miami" style="width:100%;height:100%;object-fit:cover;">
       <div class="gallery-overlay">Motel 77 · 3021 SW 8th St, Miami FL</div>
     </div>
     <div class="gallery-item">
-      <!-- 📸 Replace with <img src="room-bed.jpg"> -->
-      <div class="photo-ph"><div class="ico">🛏️</div><div class="lbl">📸 Clean Room</div><div class="hint">Bed + fresh sheets</div></div>
+      <img src="/ROOM3.png" alt="Standard Room — Motel 77" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="gallery-item">
-      <!-- 📸 Replace with <img src="bathroom.jpg"> -->
-      <div class="photo-ph"><div class="ico">🚿</div><div class="lbl">📸 Bathroom</div><div class="hint">Big shower</div></div>
+      <img src="/Beathroom.png" alt="Marble Bathroom — Motel 77" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="gallery-item">
-      <!-- 📸 Replace with <img src="parking.jpg"> -->
-      <div class="photo-ph"><div class="ico">🌴</div><div class="lbl">📸 Miami Vibes</div><div class="hint">Street / Parking area</div></div>
+      <img src="/Parking.png" alt="Free Parking — Motel 77 Miami" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="gallery-item">
-      <!-- 📸 Replace with <img src="room-detail.jpg"> -->
-      <div class="photo-ph"><div class="ico">❄️</div><div class="lbl">📸 Room Detail</div><div class="hint">TV / A/C / Comfort</div></div>
+      <img src="/room5.png" alt="Deluxe Room — Motel 77" style="width:100%;height:100%;object-fit:cover;">
     </div>
   </div>
 </section>
@@ -836,8 +968,7 @@ footer { background: var(--navy); color: white; }
 
     <div class="room-card">
       <div class="room-photo">
-        <!-- 📸 Replace .rph with <img src="room-2h.jpg"> -->
-        <div class="rph"><div class="ico">🛏️</div><div class="lbl">📸 Room photo</div></div>
+        <img src="/ROOM4.png" alt="Standard Room — 2 Hour Stay" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="room-body">
         <div class="room-duration">2</div>
@@ -859,8 +990,7 @@ footer { background: var(--navy); color: white; }
     <div class="room-card featured">
       <div class="room-badge">Most Popular</div>
       <div class="room-photo">
-        <!-- 📸 Replace .rph with <img src="room-4h.jpg"> -->
-        <div class="rph"><div class="ico">🛏️</div><div class="lbl">📸 Room photo</div></div>
+        <img src="/room5.png" alt="Luxury Suite — 4 Hour Stay" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="room-body">
         <div class="room-duration">4</div>
@@ -881,8 +1011,7 @@ footer { background: var(--navy); color: white; }
 
     <div class="room-card">
       <div class="room-photo">
-        <!-- 📸 Replace .rph with <img src="room-overnight.jpg"> -->
-        <div class="rph"><div class="ico">🌙</div><div class="lbl">📸 Room photo</div></div>
+        <img src="/BestRoom.png" alt="Deluxe Room — Overnight Stay" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="room-body">
         <div class="room-duration">8+</div>
@@ -929,8 +1058,8 @@ footer { background: var(--navy); color: white; }
       <form id="bookingForm" onsubmit="submitBooking(event)">
         <div class="form-row">
           <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" placeholder="Your name" required>
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your full name" required>
           </div>
           <div class="form-group">
             <label>Phone Number *</label>
@@ -987,7 +1116,7 @@ footer { background: var(--navy); color: white; }
     <a href="https://www.tripadvisor.com/Search?q=motel+77+miami" target="_blank" class="platform-btn tripadvisor">
       <span class="platform-icon">🦉</span> TripAdvisor
     </a>
-    <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" class="platform-btn google">
+    <a href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="platform-btn google">
       <span class="platform-icon">🗺️</span> Google Maps
     </a>
   </div>
@@ -995,9 +1124,80 @@ footer { background: var(--navy); color: white; }
 </section>
 
 <!-- =============================================
-     REVIEWS
+     SUBMIT A REVIEW
 ============================================= -->
-<section class="section fade-in" id="reviews">
+<section class="submit-review-section fade-in" id="reviews">
+  <div class="section-label">Share Your Experience</div>
+  <h2>Leave us a <em>review.</em></h2>
+  <p>Stayed with us? We'd love to hear from you. Your review helps future guests and supports our small family business.</p>
+
+  <div class="review-submit-card">
+    <form id="reviewForm" onsubmit="submitReview(event)">
+
+      <!-- Name & Date row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="rv-name" placeholder="First name or nickname" required>
+        </div>
+        <div class="form-group">
+          <label>Visit Date *</label>
+          <input type="date" id="rv-date" required>
+        </div>
+      </div>
+
+      <!-- Star rating -->
+      <div class="form-group">
+        <label>Your Rating *</label>
+        <div class="star-picker" id="starPicker">
+          <input type="radio" name="rating" id="s5" value="5" required>
+          <label for="s5" title="5 stars">★</label>
+          <input type="radio" name="rating" id="s4" value="4">
+          <label for="s4" title="4 stars">★</label>
+          <input type="radio" name="rating" id="s3" value="3">
+          <label for="s3" title="3 stars">★</label>
+          <input type="radio" name="rating" id="s2" value="2">
+          <label for="s2" title="2 stars">★</label>
+          <input type="radio" name="rating" id="s1" value="1">
+          <label for="s1" title="1 star">★</label>
+        </div>
+        <div class="star-hint">Click to select your rating</div>
+      </div>
+
+      <!-- Review text -->
+      <div class="form-group">
+        <label>Your Review *</label>
+        <textarea id="rv-text" placeholder="How was your stay? Tell us about the room, service, cleanliness..." required style="min-height:120px;"></textarea>
+      </div>
+
+      <!-- Photo upload -->
+      <div class="form-group">
+        <label>Add Photos <span style="font-weight:400;color:var(--muted);text-transform:none;letter-spacing:0;">(optional — up to 4 photos)</span></label>
+        <div class="photo-upload-area" id="uploadArea">
+          <input type="file" id="rv-photos" accept="image/*" multiple onchange="previewPhotos(event)">
+          <div class="photo-upload-icon">📷</div>
+          <div class="photo-upload-text">Click to add photos of your stay</div>
+          <div class="photo-upload-hint">JPG, PNG — max 4 photos</div>
+        </div>
+        <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+      </div>
+
+      <button type="submit" class="form-submit" style="margin-top:8px;">⭐ Post My Review</button>
+    </form>
+
+    <div class="review-submit-success" id="reviewSuccess">
+      <div class="check">🎉</div>
+      <h4>Thank you for your review!</h4>
+      <p>Your review is now live on the page. We really appreciate your feedback — it means the world to us.</p>
+      <button onclick="resetReviewForm()" style="margin-top:20px;background:var(--teal);color:white;border:none;padding:12px 28px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;cursor:pointer;">Write Another Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     GOOGLE REVIEWS
+============================================= -->
+<section class="section fade-in" style="padding-top:40px;">
   <div class="reviews-header">
     <div>
       <div class="section-label">Guest Reviews</div>
@@ -1047,7 +1247,29 @@ footer { background: var(--navy); color: white; }
       <div class="review-source">Google · Local Guide · 7 months ago</div>
     </div>
   </div>
+
+  <!-- USER SUBMITTED REVIEWS -->
+  <div class="reviews-divider"><span>Guest Reviews from this site</span></div>
+
+  <div class="user-reviews-header">
+    <div class="user-reviews-title">From Our Guests</div>
+    <div class="user-reviews-count" id="userReviewCount">0 reviews</div>
+  </div>
+  <div class="sort-bar">
+    <button class="sort-btn active" onclick="sortReviews('newest', this)">🕐 Newest</button>
+    <button class="sort-btn" onclick="sortReviews('highest', this)">⭐ Highest Rated</button>
+    <button class="sort-btn" onclick="sortReviews('photos', this)">📷 With Photos</button>
+  </div>
+  <div class="reviews-grid" id="userReviewsGrid">
+    <div class="reviews-empty">No guest reviews yet — be the first to share your experience! ☝️</div>
+  </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
 
 <!-- =============================================
      GUARANTEES
@@ -1116,21 +1338,16 @@ footer { background: var(--navy); color: white; }
     </ul>
     <div class="location-ctas">
       <a href="tel:3056496770" class="btn-primary">📞 Call Now</a>
-      <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" class="btn-outline-navy">🗺️ Get Directions</a>
+      <a href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-outline-navy">🗺️ Get Directions</a>
     </div>
   </div>
 
   <div>
-    <!-- 📸 Replace .lph with <img src="exterior-sign.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
     <div class="location-photo">
-      <div class="lph">
-        <div class="ico">📸</div>
-        <div class="lbl">Exterior Photo</div>
-        <div class="hint">Replace with photo of sign<br>or façade from street</div>
-      </div>
+      <img src="/Motel-77.png" alt="Motel 77 — 3021 SW 8th Street Miami" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="map-embed">
-      <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank">🗺️ Open in Google Maps</a>
+      <a href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">🗺️ Open in Google Maps</a>
       <span class="map-hint">3021 SW 8th Street, Miami FL 33135</span>
     </div>
   </div>
@@ -1154,7 +1371,7 @@ footer { background: var(--navy); color: white; }
           </div>
           <span class="cc-arrow">→</span>
         </a>
-        <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" class="contact-card">
+        <a href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-card">
           <div class="cc-icon teal">📍</div>
           <div class="cc-text">
             <strong>Visit Us</strong>
@@ -1162,7 +1379,7 @@ footer { background: var(--navy); color: white; }
           </div>
           <span class="cc-arrow">→</span>
         </a>
-        <a href="https://www.google.com/maps/place/Motel+77" target="_blank" class="contact-card">
+        <a href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-card">
           <div class="cc-icon gold">⭐</div>
           <div class="cc-text">
             <strong>Leave a Review</strong>
@@ -1216,9 +1433,9 @@ footer { background: var(--navy); color: white; }
       <div class="footer-tagline">"Clean room. Fair price. No drama."<br>Miami's most honest stay since day one.</div>
       <a class="footer-phone-big" href="tel:3056496770">305-649-6770</a>
       <div class="footer-social">
-        <a class="social-btn" href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" title="Google Maps">🗺️</a>
-        <a class="social-btn" href="#" title="Facebook">📘</a>
-        <a class="social-btn" href="#" title="Instagram">📸</a>
+        <a class="social-btn" href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Google Maps"><svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="2em" viewBox="0 0 256 367"><path fill="#34a853" d="M70.585 271.865a371 371 0 0 1 28.911 42.642c7.374 13.982 10.448 23.463 15.837 40.31c3.305 9.308 6.292 12.086 12.714 12.086c6.998 0 10.173-4.726 12.626-12.035c5.094-15.91 9.091-28.052 15.397-39.525c12.374-22.15 27.75-41.833 42.858-60.75c4.09-5.354 30.534-36.545 42.439-61.156c0 0 14.632-27.035 14.632-64.792c0-35.318-14.43-59.813-14.43-59.813l-41.545 11.126l-25.23 66.451l-6.242 9.163l-1.248 1.66l-1.66 2.078l-2.914 3.319l-4.164 4.163l-22.467 18.304l-56.17 32.432z" stroke-width="9" stroke="#34a853"/><path fill="#fbbc04" d="M12.612 188.892c13.709 31.313 40.145 58.839 58.031 82.995l95.001-112.534s-13.384 17.504-37.662 17.504c-27.043 0-48.89-21.595-48.89-48.825c0-18.673 11.234-31.501 11.234-31.501l-64.489 17.28z" stroke-width="9" stroke="#fbbc04"/><path fill="#4285f4" d="M166.705 5.787c31.552 10.173 58.558 31.53 74.893 63.023l-75.925 90.478s11.234-13.06 11.234-31.617c0-27.864-23.463-48.68-48.81-48.68c-23.969 0-37.735 17.475-37.735 17.475v-57z" stroke-width="9" stroke="#4285f4"/><path fill="#1a73e8" d="M30.015 45.765C48.86 23.218 82.02 0 127.736 0c22.18 0 38.89 5.823 38.89 5.823L90.29 96.516H36.205z" stroke-width="9" stroke="#1a73e8"/><path fill="#ea4335" d="M12.612 188.892S0 164.194 0 128.414c0-33.817 13.146-63.377 30.015-82.649l60.318 50.759z" stroke-width="9" stroke="#ea4335"/></svg></a>
+        <a class="social-btn" href="#" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256"><path fill="#1877f2" d="M256 128C256 57.308 198.692 0 128 0S0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445" stroke-width="5" stroke="#1877f2"/><path fill="#fff" d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A129 129 0 0 0 128 256a129 129 0 0 0 20-1.555V165z" stroke-width="5" stroke="#fff"/></svg></a>
+        <a class="social-btn" href="#" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 256 256"><path fill="#b51371" d="M128 23.064c34.177 0 38.225.13 51.722.745c12.48.57 19.258 2.655 23.769 4.408c5.974 2.322 10.238 5.096 14.717 9.575s7.253 8.743 9.575 14.717c1.753 4.511 3.838 11.289 4.408 23.768c.615 13.498.745 17.546.745 51.723s-.13 38.226-.745 51.723c-.57 12.48-2.655 19.257-4.408 23.768c-2.322 5.974-5.096 10.239-9.575 14.718s-8.743 7.253-14.717 9.574c-4.511 1.753-11.289 3.839-23.769 4.408c-13.495.616-17.543.746-51.722.746s-38.228-.13-51.723-.746c-12.48-.57-19.257-2.655-23.768-4.408c-5.974-2.321-10.239-5.095-14.718-9.574c-4.479-4.48-7.253-8.744-9.574-14.718c-1.753-4.51-3.839-11.288-4.408-23.768c-.616-13.497-.746-17.545-.746-51.723s.13-38.225.746-51.722c.57-12.48 2.655-19.258 4.408-23.769c2.321-5.974 5.095-10.238 9.574-14.717c4.48-4.48 8.744-7.253 14.718-9.575c4.51-1.753 11.288-3.838 23.768-4.408c13.497-.615 17.545-.745 51.723-.745M128 0C93.237 0 88.878.147 75.226.77c-13.625.622-22.93 2.786-31.071 5.95c-8.418 3.271-15.556 7.648-22.672 14.764S9.991 35.738 6.72 44.155C3.555 52.297 1.392 61.602.77 75.226C.147 88.878 0 93.237 0 128s.147 39.122.77 52.774c.622 13.625 2.785 22.93 5.95 31.071c3.27 8.417 7.647 15.556 14.763 22.672s14.254 11.492 22.672 14.763c8.142 3.165 17.446 5.328 31.07 5.95c13.653.623 18.012.77 52.775.77s39.122-.147 52.774-.77c13.624-.622 22.929-2.785 31.07-5.95c8.418-3.27 15.556-7.647 22.672-14.763s11.493-14.254 14.764-22.672c3.164-8.142 5.328-17.446 5.95-31.07c.623-13.653.77-18.012.77-52.775s-.147-39.122-.77-52.774c-.622-13.624-2.786-22.929-5.95-31.07c-3.271-8.418-7.648-15.556-14.764-22.672S220.262 9.99 211.845 6.72c-8.142-3.164-17.447-5.328-31.071-5.95C167.122.147 162.763 0 128 0m0 62.27c-36.302 0-65.73 29.43-65.73 65.73s29.428 65.73 65.73 65.73c36.301 0 65.73-29.428 65.73-65.73c0-36.301-29.429-65.73-65.73-65.73m0 108.397c-23.564 0-42.667-19.103-42.667-42.667S104.436 85.333 128 85.333s42.667 19.103 42.667 42.667s-19.103 42.667-42.667 42.667m83.686-110.994c0 8.484-6.876 15.36-15.36 15.36s-15.36-6.876-15.36-15.36s6.877-15.36 15.36-15.36s15.36 6.877 15.36 15.36" stroke-width="5" stroke="#b51371"/></svg></a>
       </div>
     </div>
 
@@ -1264,7 +1481,7 @@ footer { background: var(--navy); color: white; }
     <div class="footer-links">
       <a href="#booking">Book Now</a>
       <a href="#contact">Contact</a>
-      <a href="https://www.google.com/maps/place/Motel+77" target="_blank">Google Maps</a>
+      <a href="https://www.google.com/maps/place/Motel+77/@25.7659131,-80.2454419,592m/data=!3m1!1e3!4m22!1m12!3m11!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!2sMotel+77!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!9m1!1b1!16s%2Fg%2F1tf612dm!3m8!1s0x88d9b708a6c1c9f9:0xe36f616ef39d0c8b!5m2!4m1!1i2!8m2!3d25.7654494!4d-80.2435107!16s%2Fg%2F1tf612dm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Google Maps</a>
     </div>
     <div class="open-badge">● Open 24 Hours</div>
   </div>
@@ -1279,58 +1496,219 @@ footer { background: var(--navy); color: white; }
      SCRIPTS
 ============================================= -->
 <script>
-  // Scroll fade-in
+  /* ── Scroll fade-in ── */
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
   }, { threshold: 0.07 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  // Mobile menu toggle
+  /* ── Mobile menu ── */
   function toggleMenu() {
-    const m = document.getElementById('mobileMenu');
-    m.classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
   }
 
-  // Nav active link on scroll
+  /* ── Nav active on scroll ── */
   const sections = document.querySelectorAll('section[id], div[id="top"]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
     navLinks.forEach(a => {
       a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current || (current === 'top' && a.getAttribute('href') === '#top')) {
-        a.classList.add('active');
-      }
+      if (a.getAttribute('href') === '#' + current || (current === 'top' && a.getAttribute('href') === '#top')) a.classList.add('active');
     });
   });
 
-  // Booking form submission
+  /* ── Booking form ── */
   function submitBooking(e) {
     e.preventDefault();
-    const form = document.getElementById('bookingForm');
-    const success = document.getElementById('formSuccess');
-    form.style.display = 'none';
-    success.style.display = 'block';
-    // In production: send data to backend / FormSubmit / Netlify Forms etc.
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
   }
 
-  // Contact form submission
+  /* ── Contact form ── */
   function submitContact(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button');
-    btn.textContent = '✅ Message Sent! We\'ll call you shortly.';
+    btn.textContent = "✅ Message Sent! We'll call you shortly.";
     btn.style.background = 'var(--teal)';
     btn.disabled = true;
     e.target.reset();
   }
 
-  // Set date input min to today
-  const dateInputs = document.querySelectorAll('input[type="date"]');
+  /* ── Date inputs min ── */
   const today = new Date().toISOString().split('T')[0];
-  dateInputs.forEach(d => d.setAttribute('min', today));
+  document.querySelectorAll('input[type="date"]').forEach(d => d.setAttribute('min', today));
+
+  /* ══════════════════════════════════════════
+     REVIEW SYSTEM
+  ══════════════════════════════════════════ */
+
+  const STORAGE_KEY = 'motel77_reviews';
+  let reviewPhotosData = []; // base64 photos for current submission
+  let currentSort = 'newest';
+
+  /* ── Load & render reviews on page load ── */
+  window.addEventListener('DOMContentLoaded', () => {
+    renderUserReviews(getReviews());
+    // set visit date default to today
+    const rvDate = document.getElementById('rv-date');
+    if (rvDate) rvDate.value = today;
+  });
+
+  /* ── Get reviews from localStorage ── */
+  function getReviews() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { return []; }
+  }
+
+  /* ── Save reviews to localStorage ── */
+  function saveReviews(reviews) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews)); } catch {}
+  }
+
+  /* ── Photo preview ── */
+  function previewPhotos(event) {
+    const files = Array.from(event.target.files).slice(0, 4);
+    const grid = document.getElementById('photoPreviewGrid');
+    grid.innerHTML = '';
+    reviewPhotosData = [];
+
+    files.forEach((file, i) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        reviewPhotosData[i] = e.target.result;
+        const item = document.createElement('div');
+        item.className = 'photo-preview-item';
+        item.innerHTML = `
+          <img src="${e.target.result}" alt="Preview">
+          <div class="remove-ph" onclick="removePreviewPhoto(${i})">✕</div>
+        `;
+        grid.appendChild(item);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function removePreviewPhoto(index) {
+    reviewPhotosData.splice(index, 1);
+    // re-render previews
+    const grid = document.getElementById('photoPreviewGrid');
+    grid.innerHTML = '';
+    reviewPhotosData.forEach((src, i) => {
+      const item = document.createElement('div');
+      item.className = 'photo-preview-item';
+      item.innerHTML = `<img src="${src}" alt="Preview"><div class="remove-ph" onclick="removePreviewPhoto(${i})">✕</div>`;
+      grid.appendChild(item);
+    });
+  }
+
+  /* ── Submit review ── */
+  function submitReview(e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('rv-name').value.trim();
+    const date    = document.getElementById('rv-date').value;
+    const text    = document.getElementById('rv-text').value.trim();
+    const ratingEl = document.querySelector('input[name="rating"]:checked');
+    if (!ratingEl) { alert('Please select a star rating!'); return; }
+    const rating  = parseInt(ratingEl.value);
+
+    const review = {
+      id: Date.now(),
+      name,
+      date,
+      text,
+      rating,
+      photos: [...reviewPhotosData],
+      timestamp: Date.now()
+    };
+
+    const reviews = getReviews();
+    reviews.unshift(review);
+    saveReviews(reviews);
+    renderUserReviews(reviews);
+
+    // Show success
+    document.getElementById('reviewForm').style.display = 'none';
+    document.getElementById('reviewSuccess').style.display = 'block';
+
+    // Scroll to user reviews
+    setTimeout(() => {
+      document.getElementById('userReviewsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 600);
+  }
+
+  /* ── Reset form ── */
+  function resetReviewForm() {
+    document.getElementById('reviewForm').reset();
+    document.getElementById('reviewForm').style.display = 'block';
+    document.getElementById('reviewSuccess').style.display = 'none';
+    document.getElementById('photoPreviewGrid').innerHTML = '';
+    reviewPhotosData = [];
+    document.getElementById('rv-date').value = today;
+  }
+
+  /* ── Render user reviews ── */
+  function renderUserReviews(reviews) {
+    const grid = document.getElementById('userReviewsGrid');
+    const countEl = document.getElementById('userReviewCount');
+    if (!grid) return;
+
+    let sorted = [...reviews];
+    if (currentSort === 'newest') sorted.sort((a,b) => b.timestamp - a.timestamp);
+    else if (currentSort === 'highest') sorted.sort((a,b) => b.rating - a.rating);
+    else if (currentSort === 'photos') sorted = sorted.filter(r => r.photos && r.photos.length > 0).concat(sorted.filter(r => !r.photos || r.photos.length === 0));
+
+    countEl.textContent = `${reviews.length} review${reviews.length !== 1 ? 's' : ''}`;
+
+    if (sorted.length === 0) {
+      grid.innerHTML = '<div class="reviews-empty">No guest reviews yet — be the first to share your experience! ☝️</div>';
+      return;
+    }
+
+    grid.innerHTML = sorted.map(r => {
+      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+      const dateStr = r.date ? new Date(r.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : '';
+      const photosHTML = (r.photos && r.photos.length > 0)
+        ? `<div class="review-photos">${r.photos.map(p => `<div class="review-photo" onclick="openLightbox('${p}')"><img src="${p}" alt="Guest photo"></div>`).join('')}</div>`
+        : '';
+      return `
+        <div class="review-card user-review">
+          <div class="stars">${stars}</div>
+          <p class="review-text">${escapeHTML(r.text)}</p>
+          ${photosHTML}
+          <div class="review-author">${escapeHTML(r.name)}</div>
+          <div class="review-source">Motel 77 Guest${dateStr ? ' · ' + dateStr : ''}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  /* ── Sort reviews ── */
+  function sortReviews(type, btn) {
+    currentSort = type;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderUserReviews(getReviews());
+  }
+
+  /* ── Lightbox ── */
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ── Escape HTML for safety ── */
+  function escapeHTML(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
 </script>
 </body>
 </html>
