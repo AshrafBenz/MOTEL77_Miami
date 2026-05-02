@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Motel 77 Miami — Clean rooms, fair prices. Hourly & overnight stays. Open 24/7. 3021 SW 8th Street, Miami FL. Call 305-649-6770.">
+<title>Motel 77 — Miami | Rooms from $25 · Open 24 Hours</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   RESET & ROOT VARIABLES
+============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --sand: #fdf6ec;
+  --warm: #fff9f4;
+  --coral: #e8614a;
+  --coral-light: #ff8370;
+  --teal: #1aada8;
+  --teal-dark: #127a77;
+  --gold: #f0b040;
+  --gold-dark: #c88a20;
+  --navy: #1c3557;
+  --navy-light: #254878;
+  --text: #2a2218;
+  --muted: #8a7a6a;
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--warm); color: var(--text); font-family: 'Nunito', sans-serif; overflow-x: hidden; }
+
+/* =============================================
+   NAVIGATION
+============================================= */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(253,249,244,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 3px solid var(--teal);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.09);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 40px; gap: 20px;
+}
+.nav-logo { font-family: 'Pacifico', cursive; font-size: 24px; color: var(--coral); text-decoration: none; white-space: nowrap; }
+.nav-logo span { color: var(--teal); }
+.nav-links {
+  display: flex; align-items: center; gap: 4px; list-style: none;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 700; color: var(--navy); text-decoration: none;
+  padding: 8px 14px; border-radius: 20px; transition: all 0.2s; letter-spacing: 0.3px;
+}
+.nav-links a:hover { background: rgba(26,173,168,0.1); color: var(--teal); }
+.nav-links a.active { color: var(--coral); }
+.nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.nav-phone {
+  font-size: 13px; font-weight: 800; color: var(--navy); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-phone:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--coral); color: white; font-weight: 700; font-size: 13px;
+  padding: 9px 20px; border: none; cursor: pointer; text-decoration: none;
+  border-radius: 30px; transition: all 0.2s; box-shadow: 0 4px 14px rgba(232,97,74,0.35);
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--coral-light); transform: translateY(-1px); }
+
+/* Hamburger */
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.nav-burger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
+.nav-mobile { display: none; padding: 16px 40px 20px; border-top: 1px solid rgba(0,0,0,0.07); flex-direction: column; gap: 4px; }
+.nav-mobile.open { display: flex; }
+.nav-mobile a { font-size: 15px; font-weight: 700; color: var(--navy); text-decoration: none; padding: 10px 14px; border-radius: 10px; }
+.nav-mobile a:hover { background: rgba(26,173,168,0.1); color: var(--teal); }
+.nav-mobile .mob-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+/* =============================================
+   HERO
+============================================= */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 50px 60px; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(160deg, #0d2d47 0%, #1a5a6e 30%, #c85a3a 68%, #e8a030 100%);
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.12) 55%, transparent 100%);
+}
+/* PHOTO HERO — replace .hero-bg with: <img src="miami-night.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"> */
+
+.sign-frame {
+  position: absolute; top: 50%; right: 7%; transform: translateY(-50%);
+  z-index: 2; animation: signFloat 5s ease-in-out infinite;
+}
+@keyframes signFloat { 0%,100%{transform:translateY(-50%) rotate(-1.5deg);}50%{transform:translateY(-53%) rotate(1deg);} }
+.sign-box {
+  background: white; border: 4px solid #ddd; padding: 18px 26px; text-align: center;
+  border-radius: 4px; position: relative;
+  box-shadow: 0 0 30px rgba(240,176,64,0.4), 0 0 60px rgba(26,173,168,0.2), 0 24px 60px rgba(0,0,0,0.5);
+}
+.sign-motel { font-family: 'Pacifico', cursive; font-size: 44px; color: var(--coral); line-height: 1; }
+.sign-77 { font-family: 'Pacifico', cursive; font-size: 68px; color: var(--navy); line-height: 0.85; }
+.sign-open { font-weight: 800; font-size: 12px; color: var(--coral); letter-spacing: 3px; text-transform: uppercase; margin: 6px 0 3px; }
+.sign-phone { font-family: 'Pacifico', cursive; font-size: 20px; color: var(--navy); }
+.sign-pole { width: 10px; height: 70px; background: var(--navy); margin: 0 auto; }
+.sign-base { width: 50px; height: 8px; background: var(--navy); margin: 0 auto; border-radius: 3px; }
+.address-badge {
+  position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--text); font-weight: 800; font-size: 11px;
+  letter-spacing: 1px; padding: 4px 14px; white-space: nowrap; border-radius: 20px;
+}
+
+.hero-content { position: relative; z-index: 3; max-width: 580px; }
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-weight: 700;
+}
+.hero-eyebrow::before { content:''; display:block; width:36px; height:2px; background:var(--gold); border-radius:2px; }
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 1.12; color: white; margin-bottom: 14px;
+  text-shadow: 2px 4px 20px rgba(0,0,0,0.4);
+}
+h1 span { color: var(--gold); }
+.hero-sub { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.87); max-width: 480px; margin-bottom: 8px; }
+
+/* Google Rating in hero */
+.hero-rating {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.hero-stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; }
+.hero-rating-text { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 600; }
+.hero-rating-text strong { color: white; }
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--coral); color: white; font-weight: 700; font-size: 14px; letter-spacing: 0.5px;
+  padding: 15px 32px; border: none; cursor: pointer; text-decoration: none; display: inline-flex;
+  align-items: center; gap: 8px;
+  border-radius: 40px; transition: all 0.25s; box-shadow: 0 6px 20px rgba(232,97,74,0.45);
+}
+.btn-primary:hover { background: var(--coral-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,97,74,0.5); }
+
+.btn-secondary {
+  background: transparent; color: white; font-weight: 600; font-size: 14px;
+  padding: 14px 30px; border: 2px solid rgba(255,255,255,0.55);
+  cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 40px; transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.btn-teal {
+  background: var(--teal); color: white; font-weight: 700; font-size: 14px;
+  padding: 15px 32px; border: none; cursor: pointer; text-decoration: none; display: inline-flex;
+  align-items: center; gap: 8px;
+  border-radius: 40px; transition: all 0.25s; box-shadow: 0 6px 20px rgba(26,173,168,0.4);
+}
+.btn-teal:hover { background: var(--teal-dark); transform: translateY(-2px); }
+.btn-outline-navy {
+  background: transparent; color: var(--navy); font-weight: 700; font-size: 14px;
+  padding: 14px 30px; border: 2px solid var(--navy);
+  cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 40px; transition: all 0.2s;
+}
+.btn-outline-navy:hover { background: var(--navy); color: white; }
+
+/* =============================================
+   TRUST BAR
+============================================= */
+.trust-bar {
+  background: var(--teal); padding: 14px 40px;
+  display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; align-items: center;
+}
+.trust-item { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: white; font-weight: 700; display: flex; align-items: center; gap: 7px; }
+.trust-item .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* =============================================
+   BOOKING BANNER (sticky mini bar)
+============================================= */
+.booking-banner {
+  background: var(--navy); padding: 14px 40px;
+  display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap;
+}
+.booking-banner p { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 600; }
+.booking-banner strong { color: white; }
+
+/* =============================================
+   SECTIONS BASE
+============================================= */
+.section { padding: 90px 50px; background: var(--warm); }
+.section.alt { background: var(--sand); }
+.section-label {
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 700;
+}
+.section-label::before { content:''; display:block; width:28px; height:2px; background:var(--teal); border-radius:2px; }
+h2 { font-family: 'Pacifico', cursive; font-size: clamp(28px, 4vw, 46px); line-height: 1.2; margin-bottom: 44px; color: var(--navy); }
+h2 em { font-style: normal; color: var(--coral); }
+h3 { font-family: 'Pacifico', cursive; font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+
+/* =============================================
+   GOOGLE RATING BLOCK
+============================================= */
+.google-rating-block {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: white; border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 14px; padding: 14px 22px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  margin-bottom: 48px;
+}
+.g-logo { font-size: 28px; }
+.g-info { display: flex; flex-direction: column; }
+.g-stars { color: #fbbc04; font-size: 18px; letter-spacing: 2px; }
+.g-text { font-size: 13px; color: var(--muted); font-weight: 600; }
+.g-text strong { color: var(--text); }
+
+/* =============================================
+   WHY CARDS
+============================================= */
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.why-card {
+  background: white; padding: 34px 28px; border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-top: 4px solid transparent; transition: all 0.3s;
+}
+.why-card:nth-child(1){ border-top-color:var(--teal); }
+.why-card:nth-child(2){ border-top-color:var(--coral); }
+.why-card:nth-child(3){ border-top-color:var(--gold); }
+.why-card:nth-child(4){ border-top-color:var(--navy); }
+.why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+.why-icon { font-size: 34px; margin-bottom: 14px; display: block; }
+.why-title { font-family: 'Pacifico', cursive; font-size: 19px; margin-bottom: 10px; color: var(--navy); }
+.why-desc { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* =============================================
+   GALLERY
+============================================= */
+.gallery-section { padding: 80px 50px; background: var(--sand); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 12px;
+}
+.gallery-item { position: relative; overflow: hidden; border-radius: 14px; }
+.gallery-item.big { grid-row: span 2; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.gallery-item:hover img { transform: scale(1.04); }
+.photo-ph {
+  width: 100%; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; padding: 20px;
+}
+.gallery-item:nth-child(1) .photo-ph { background: linear-gradient(135deg, #aed4e6, #6fb0cc); }
+.gallery-item:nth-child(2) .photo-ph { background: linear-gradient(135deg, #f0d4a8, #d8a868); }
+.gallery-item:nth-child(3) .photo-ph { background: linear-gradient(135deg, #b8e0c0, #80c090); }
+.gallery-item:nth-child(4) .photo-ph { background: linear-gradient(135deg, #e0b8cc, #c088a8); }
+.gallery-item:nth-child(5) .photo-ph { background: linear-gradient(135deg, #b8cce8, #80a8d8); }
+.photo-ph .ico { font-size: 36px; opacity: 0.5; margin-bottom: 8px; }
+.photo-ph .lbl { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.38); }
+.photo-ph .hint { font-size: 10px; color: rgba(0,0,0,0.28); margin-top: 4px; line-height: 1.4; }
+.gallery-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(28,53,87,0.75), transparent);
+  padding: 18px 16px 14px; color: white; font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+}
+
+/* =============================================
+   ROOMS
+============================================= */
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.room-card {
+  border: 2px solid rgba(26,173,168,0.2); padding: 0; position: relative;
+  border-radius: 18px; background: white; overflow: hidden;
+  transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+.room-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,173,168,0.15); }
+.room-card.featured { border-color: var(--coral); }
+.room-card.featured:hover { box-shadow: 0 12px 30px rgba(232,97,74,0.2); }
+.room-photo { width: 100%; height: 170px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+.room-photo img { width:100%; height:100%; object-fit:cover; }
+.room-photo .rph { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.room-card:nth-child(1) .room-photo .rph { background: linear-gradient(135deg, #d4e8f0, #a0c8dc); }
+.room-card:nth-child(2) .room-photo .rph { background: linear-gradient(135deg, #f8e0d4, #eaac98); }
+.room-card:nth-child(3) .room-photo .rph { background: linear-gradient(135deg, #d0e4d8, #98c4a8); }
+.rph .ico { font-size: 32px; opacity: 0.5; }
+.rph .lbl { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.28); margin-top: 8px; }
+.room-body { padding: 26px 26px 30px; }
+.room-badge { position: absolute; top: 14px; right: 14px; background: var(--coral); color: white; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; font-weight: 700; border-radius: 20px; z-index: 2; }
+.room-duration { font-family: 'Pacifico', cursive; font-size: 50px; color: var(--teal); line-height: 1; }
+.room-card.featured .room-duration { color: var(--coral); }
+.room-unit { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; font-weight: 700; }
+.room-name { font-family: 'Pacifico', cursive; font-size: 20px; margin-bottom: 8px; color: var(--navy); }
+.room-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+.room-features { list-style: none; margin-bottom: 20px; }
+.room-features li { font-size: 13px; color: var(--text); padding: 3px 0; display: flex; align-items: center; gap: 7px; }
+.room-features li::before { content: '✓'; color: var(--teal); font-weight: 800; font-size: 13px; }
+.room-card.featured .room-features li::before { color: var(--coral); }
+.room-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.room-btn {
+  display: inline-flex; align-items: center; gap: 6px; background: var(--teal); color: white;
+  font-size: 13px; font-weight: 700; padding: 11px 22px; cursor: pointer; text-decoration: none;
+  border-radius: 30px; transition: all 0.2s; border: none; flex: 1; justify-content: center;
+}
+.room-btn:hover { background: var(--teal-dark); transform: translateY(-1px); }
+.room-card.featured .room-btn { background: var(--coral); }
+.room-card.featured .room-btn:hover { background: var(--coral-light); }
+
+/* =============================================
+   BOOKING FORM SECTION
+============================================= */
+.booking-section {
+  padding: 90px 50px; background: var(--navy); position: relative; overflow: hidden;
+}
+.booking-section::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,176,64,0.08) 0%, transparent 70%);
+}
+.booking-section::after {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,173,168,0.1) 0%, transparent 70%);
+}
+.booking-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px; align-items: start; position: relative; z-index: 1; }
+.booking-info .section-label { color: var(--gold); }
+.booking-info .section-label::before { background: var(--gold); }
+.booking-info h2 { color: white; margin-bottom: 20px; }
+.booking-info h2 em { color: var(--gold); }
+.booking-info p { color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 15px; margin-bottom: 28px; }
+.booking-perks { list-style: none; margin-bottom: 32px; }
+.booking-perks li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px; color: rgba(255,255,255,0.75);
+}
+.booking-perks li span { font-size: 20px; flex-shrink: 0; }
+.booking-perks li strong { color: white; font-weight: 700; }
+.direct-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(240,176,64,0.15); border: 1px solid rgba(240,176,64,0.35);
+  color: var(--gold); font-size: 13px; font-weight: 700; padding: 10px 18px;
+  border-radius: 30px; margin-bottom: 20px;
+}
+
+/* Form */
+.booking-form-card {
+  background: white; border-radius: 20px; padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.booking-form-card h3 { color: var(--navy); font-size: 24px; margin-bottom: 6px; }
+.form-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 12px 16px; border: 2px solid #e8e0d8;
+  border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 14px; color: var(--text);
+  background: var(--warm); transition: border-color 0.2s; outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--teal); background: white; }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-submit { width: 100%; padding: 16px; background: var(--coral); color: white; border: none; border-radius: 40px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.25s; box-shadow: 0 6px 20px rgba(232,97,74,0.4); letter-spacing: 0.5px; }
+.form-submit:hover { background: var(--coral-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,97,74,0.5); }
+.form-success { display: none; text-align: center; padding: 20px; }
+.form-success .check { font-size: 48px; margin-bottom: 12px; }
+.form-success h4 { font-family: 'Pacifico', cursive; font-size: 22px; color: var(--teal); margin-bottom: 8px; }
+.form-success p { font-size: 14px; color: var(--muted); }
+
+/* =============================================
+   OTA / PLATFORMS
+============================================= */
+.platforms-section { padding: 60px 50px; background: var(--sand); text-align: center; }
+.platforms-section p { font-size: 14px; color: var(--muted); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px; }
+.platforms-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+.platform-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; border-radius: 12px; text-decoration: none;
+  font-weight: 700; font-size: 14px; transition: all 0.25s;
+  border: 2px solid transparent; box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+.platform-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.platform-btn.booking { background: #003580; color: white; }
+.platform-btn.booking:hover { background: #00266a; }
+.platform-btn.expedia { background: #ffc423; color: #2a2218; }
+.platform-btn.expedia:hover { background: #ffb000; }
+.platform-btn.tripadvisor { background: #34e0a1; color: #2a2218; }
+.platform-btn.tripadvisor:hover { background: #25d492; }
+.platform-btn.google { background: white; color: #2a2218; border-color: #e8e0d8; }
+.platform-btn.google:hover { border-color: var(--teal); }
+.platform-icon { font-size: 20px; }
+.platform-note { font-size: 12px; color: var(--muted); margin-top: 20px; }
+
+/* =============================================
+   REVIEWS
+============================================= */
+.reviews-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; }
+.reviews-header h2 { margin-bottom: 0; }
+.overall-rating {
+  background: white; border-radius: 16px; padding: 20px 28px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08); text-align: center;
+  border: 2px solid rgba(240,176,64,0.25);
+  min-width: 140px;
+}
+.overall-score { font-family: 'Pacifico', cursive; font-size: 52px; color: var(--navy); line-height: 1; }
+.overall-stars { color: #fbbc04; font-size: 18px; letter-spacing: 3px; margin: 4px 0; }
+.overall-count { font-size: 12px; color: var(--muted); font-weight: 700; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.review-card {
+  background: white; padding: 28px 24px; position: relative;
+  border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  border-left: 4px solid var(--gold); transition: transform 0.2s;
+}
+.review-card:hover { transform: translateY(-3px); }
+.review-card::before { content:'"'; position:absolute; top:8px; right:16px; font-family:'Pacifico',cursive; font-size:55px; color:rgba(240,176,64,0.12); line-height:1; }
+.stars { color: #fbbc04; font-size: 15px; margin-bottom: 10px; letter-spacing: 1px; }
+.review-text { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 12px; font-style: italic; }
+.review-author { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.review-source { font-size: 10px; color: var(--teal); font-weight: 700; margin-top: 4px; }
+
+/* =============================================
+   GUARANTEE / TRUST STRIP
+============================================= */
+.guarantee-strip {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  padding: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;
+}
+.guarantee-item { text-align: center; }
+.guarantee-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+.guarantee-title { font-family: 'Pacifico', cursive; font-size: 16px; color: white; margin-bottom: 6px; }
+.guarantee-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+/* =============================================
+   AMENITIES
+============================================= */
+.amenities-bar { background: var(--navy); padding: 50px; display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+.amenity { padding: 20px 32px; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+.amenity:last-child { border-right: none; }
+.amenity-icon { font-size: 28px; display: block; margin-bottom: 10px; }
+.amenity-name { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 700; }
+
+/* =============================================
+   CTA BANNER
+============================================= */
+.cta-banner {
+  background: linear-gradient(135deg, var(--coral) 0%, #d44030 100%);
+  padding: 70px 50px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: '🌴'; position: absolute; left: 5%; top: 50%; transform: translateY(-50%);
+  font-size: 80px; opacity: 0.15;
+}
+.cta-banner::after {
+  content: '🌴'; position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+  font-size: 80px; opacity: 0.15;
+}
+.cta-banner h2 { color: white; margin-bottom: 12px; }
+.cta-banner p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-banner .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-banner .btn-white { background: white; color: var(--coral); font-weight: 800; font-size: 15px; padding: 16px 36px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border-radius: 40px; transition: all 0.2s; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.cta-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+
+/* =============================================
+   LOCATION
+============================================= */
+.location-section {
+  padding: 90px 50px; background: var(--warm);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start;
+}
+.location-photo {
+  width: 100%; height: 340px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.14); position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #b8d4e6, #88b8d0);
+}
+.location-photo img { width:100%; height:100%; object-fit:cover; }
+.location-photo .lph { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px; }
+.lph .ico { font-size:44px; opacity:0.4; }
+.lph .lbl { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(0,0,0,0.28); margin-top:12px; }
+.lph .hint { font-size:11px; color:rgba(0,0,0,0.22); margin-top:6px; line-height:1.6; }
+.map-embed {
+  width: 100%; height: 220px; border-radius: 14px; overflow: hidden;
+  margin-top: 16px; border: 2px solid rgba(26,173,168,0.2);
+  background: linear-gradient(135deg, #ddeef5, #b8d8e8);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 10px;
+}
+.map-embed a {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--navy); text-decoration: none; font-weight: 700; font-size: 14px;
+  padding: 12px 22px; border-radius: 30px; box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  transition: all 0.2s;
+}
+.map-embed a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
+.map-hint { font-size: 12px; color: var(--muted); font-weight: 600; }
+.info-list { list-style: none; margin-top: 24px; }
+.info-list li { padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.07); display: flex; align-items: flex-start; gap: 14px; font-size: 15px; color: var(--muted); }
+.info-list li span { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.info-list li strong { color: var(--text); font-weight: 700; display: block; }
+.location-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* =============================================
+   CONTACT SECTION
+============================================= */
+.contact-section { padding: 90px 50px; background: var(--sand); }
+.contact-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 70px; align-items: start; }
+.contact-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.contact-card {
+  background: white; border-radius: 16px; padding: 22px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  display: flex; align-items: center; gap: 18px;
+  text-decoration: none; color: var(--text); transition: all 0.25s;
+  border: 2px solid transparent;
+}
+.contact-card:hover { border-color: var(--teal); transform: translateX(4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+
+.contact-card.call-card:hover { border-color: var(--coral); }
+.cc-icon {
+  width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.cc-icon.teal { background: rgba(26,173,168,0.12); }
+.cc-icon.green { background: rgba(37,211,102,0.12); }
+.cc-icon.coral { background: rgba(232,97,74,0.12); }
+.cc-icon.gold { background: rgba(240,176,64,0.15); }
+.cc-text strong { display: block; font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+.cc-text span { font-size: 13px; color: var(--muted); }
+.cc-arrow { margin-left: auto; color: var(--muted); font-size: 18px; }
+
+.contact-form-card { background: white; border-radius: 20px; padding: 36px 32px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.contact-form-card h3 { margin-bottom: 6px; }
+.cf-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.cf-submit { width: 100%; padding: 15px; background: var(--teal); color: white; border: none; border-radius: 40px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.25s; box-shadow: 0 6px 20px rgba(26,173,168,0.35); }
+.cf-submit:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+/* =============================================
+   FOOTER
+============================================= */
+footer { background: var(--navy); color: white; }
+.footer-main {
+  padding: 70px 50px 50px;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 50px;
+}
+.footer-logo { font-family: 'Pacifico', cursive; font-size: 40px; color: var(--gold); line-height: 1; }
+.footer-tagline { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 10px; font-style: italic; line-height: 1.6; }
+.footer-phone-big { font-family: 'Pacifico', cursive; font-size: 26px; color: var(--coral); margin-top: 20px; display: block; text-decoration: none; transition: color 0.2s; }
+.footer-phone-big:hover { color: var(--coral-light); }
+.footer-social { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none;
+}
+.social-btn:hover { background: var(--teal); border-color: var(--teal); transform: translateY(-2px); }
+.footer-col h4 { font-family: 'Pacifico', cursive; font-size: 17px; color: var(--gold); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-col ul li strong { color: white; font-weight: 700; display: block; }
+.footer-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0 50px; }
+.footer-bottom {
+  padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.28); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.open-badge {
+  background: rgba(26,173,168,0.12); border: 1px solid rgba(26,173,168,0.35);
+  color: #40d8d2; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 8px 18px; border-radius: 20px; font-weight: 700;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
+
+/* =============================================
+   FLOATING BUTTONS
+============================================= */
+
+50%{transform:translateY(-5px);} }
+.float-call {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  background: var(--coral); color: white; border-radius: 50%;
+  width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+  font-size: 22px; box-shadow: 0 8px 20px rgba(232,97,74,0.45);
+  text-decoration: none; transition: all 0.25s;
+}
+.float-call:hover { transform: scale(1.1); background: var(--coral-light); }
+
+/* =============================================
+   FADE IN
+============================================= */
+.fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media(max-width: 1100px) {
+  .footer-main { grid-template-columns: 1fr 1fr; }
+  .booking-inner { gap: 50px; }
+  .contact-inner { gap: 50px; }
+}
+@media(max-width: 900px) {
+  .location-section, .booking-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item.big { grid-row: span 1; height: 250px; }
+  .gallery-item { height: 200px; }
+  .guarantee-strip { padding: 40px 30px; }
+  .booking-section { padding: 70px 30px; }
+  .contact-section { padding: 70px 30px; }
+}
+@media(max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-phone { display: none; }
+  
+.nav-burger { display: flex; }
+  .nav-inner { padding: 14px 20px; }
+}
+@media(max-width: 640px) {
+  nav { padding: 0; }
+  .hero { padding: 0 22px 70px; }
+  .section, .gallery-section, .location-section, .contact-section { padding: 60px 22px; }
+  .booking-section { padding: 60px 22px; }
+  .trust-bar { gap: 14px; padding: 12px 20px; }
+  .trust-item { font-size: 11px; }
+  .amenities-bar { padding: 36px 20px; }
+  .amenity { padding: 16px 16px; }
+  .footer-main { grid-template-columns: 1fr; padding: 50px 22px 40px; gap: 32px; }
+  .footer-bottom { padding: 18px 22px; flex-direction: column; align-items: flex-start; }
+  .footer-divider { margin: 0 22px; }
+  .footer-links { display: none; }
+  .sign-frame { display: none; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item, .gallery-item.big { height: 220px; }
+  .form-row { grid-template-columns: 1fr; }
+  .platforms-section { padding: 50px 22px; }
+  .guarantee-strip { padding: 40px 22px; }
+  .cta-banner { padding: 60px 22px; }
+  .cta-banner::before, .cta-banner::after { display: none; }
+  .float-call { bottom: 20px; right: 20px; width: 48px; height: 48px; font-size: 20px; }
+  .nav-mobile { padding: 14px 20px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     NAVIGATION
+============================================= -->
+<nav id="top">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Motel <span>77</span></a>
+    <ul class="nav-links">
+      <li><a href="#top" class="active">Home</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#booking">Book Now</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:3056496770" class="nav-phone">📞 305-649-6770</a>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#top" onclick="toggleMenu()">🏠 Home</a>
+    <a href="#rooms" onclick="toggleMenu()">🛏️ Rooms</a>
+    <a href="#booking" onclick="toggleMenu()">📅 Book Now</a>
+    <a href="#reviews" onclick="toggleMenu()">⭐ Reviews</a>
+    <a href="#contact" onclick="toggleMenu()">📍 Contact</a>
+    <div class="mob-ctas">
+      <a href="tel:3056496770" class="btn-primary" style="flex:1;">📞 Call Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================================
+     HERO
+============================================= -->
+<section class="hero">
+  <!-- 📸 PHOTO HERO: Replace .hero-bg with <img src="miami-night.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"> -->
+  <div class="hero-bg"></div>
+
+  <div class="sign-frame">
+    <div class="sign-box">
+      <div class="sign-motel">Motel</div>
+      <div class="sign-77">77 🌴</div>
+      <div class="sign-open">Open 24 Hrs</div>
+      <div class="sign-phone">305-649-6770</div>
+      <div class="address-badge">3021 SW 8th St</div>
+    </div>
+    <div class="sign-pole"></div>
+    <div class="sign-base"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Miami, Florida · Family Owned Since Day One</p>
+    <h1>Comfortable Stay.<br><span>Honest Prices.</span><br>Book Direct.</h1>
+
+    <!-- Multilingual description -->
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+      <p class="hero-sub" style="margin-bottom:0;">
+        <span style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.55);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-right:8px;vertical-align:middle;">EN</span>
+        Comfortable stay with fair pricing — book directly for the best rates.
+      </p>
+      <p class="hero-sub" style="margin-bottom:0;">
+        <span style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.55);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-right:8px;vertical-align:middle;">ES</span>
+        Estancia cómoda con precios justos — reserva directamente para las mejores tarifas.
+      </p>
+      <!-- <p class="hero-sub" style="margin-bottom:0;font-size:15px;" dir="rtl" lang="ar">
+        <span dir="ltr" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.55);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;">AR</span>
+        إقامة مريحة بأسعار عادلة — احجز مباشرة للحصول على أفضل الأسعار.
+      </p> -->
+    </div>
+    <div class="hero-rating">
+      <span class="hero-stars">★★★★</span>
+      <span class="hero-rating-text"><strong>4.0 / 5</strong> · Google Reviews · 3021 SW 8th St</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#booking">📅 Book a Room</a>
+      <a class="btn-secondary" href="tel:3056496770">📞 Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TRUST BAR
+============================================= -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="dot"></span>Open 24 Hours</div>
+  <div class="trust-item"><span class="dot"></span>Walk-Ins Welcome</div>
+  <div class="trust-item"><span class="dot"></span>Free Parking</div>
+  <div class="trust-item"><span class="dot"></span>A/C & Wi-Fi</div>
+  <div class="trust-item"><span class="dot"></span>2hr · 4hr · Overnight</div>
+  <div class="trust-item"><span class="dot"></span>English & Español</div>
+</div>
+
+<!-- =============================================
+     BOOKING BANNER
+============================================= -->
+<div class="booking-banner">
+  <p>🏆 <strong>Best Rate Guaranteed</strong> — Book directly and skip the platform fees</p>
+  <a href="#booking" class="btn-primary" style="padding:10px 24px;font-size:13px;">Reserve Now →</a>
+</div>
+
+<!-- =============================================
+     WHY SECTION
+============================================= -->
+<section class="section fade-in">
+  <div class="section-label">Why Motel 77</div>
+  <div class="google-rating-block">
+    <span class="g-logo">🌟</span>
+    <div class="g-info">
+      <span class="g-stars">★★★★</span>
+      <span class="g-text"><strong>4.0 / 5</strong> · Based on Google Reviews · Miami, FL</span>
+    </div>
+  </div>
+  <h2>Miami's most <em>honest</em> stay.</h2>
+  <div class="why-grid">
+    <div class="why-card fade-in">
+      <span class="why-icon">🧹</span>
+      <div class="why-title">Spotless Clean</div>
+      <p class="why-desc">"Very clean and ready to go." Rooms cleaned thoroughly between every stay — no exceptions, guaranteed.</p>
+    </div>
+    <div class="why-card fade-in">
+      <span class="why-icon">⏱️</span>
+      <div class="why-title">Flexible Hours</div>
+      <p class="why-desc">2-hour, 4-hour, or overnight options. Pay only for the time you need — no forced minimums.</p>
+    </div>
+    <div class="why-card fade-in">
+      <span class="why-icon">🤝</span>
+      <div class="why-title">Family Owned</div>
+      <p class="why-desc">"Adorable and extremely welcoming." Real people run this place with care. Fast check-in, warm service.</p>
+    </div>
+    <div class="why-card fade-in">
+      <span class="why-icon">📍</span>
+      <div class="why-title">Prime Location</div>
+      <p class="why-desc">Heart of Miami on SW 8th Street. Near bus stops, Home Depot, and the Calle Ocho corridor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     GALLERY
+============================================= -->
+<section class="gallery-section fade-in">
+  <div class="section-label">Gallery</div>
+  <h2>See it for <em>yourself.</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item big">
+      <!-- 📸 Replace .photo-ph with <img src="facade.jpg"> -->
+      <div class="photo-ph"><div class="ico">🏨</div><div class="lbl">📸 Façade / Exterior</div><div class="hint">Replace with real photo</div></div>
+      <div class="gallery-overlay">Motel 77 · 3021 SW 8th St, Miami FL</div>
+    </div>
+    <div class="gallery-item">
+      <!-- 📸 Replace with <img src="room-bed.jpg"> -->
+      <div class="photo-ph"><div class="ico">🛏️</div><div class="lbl">📸 Clean Room</div><div class="hint">Bed + fresh sheets</div></div>
+    </div>
+    <div class="gallery-item">
+      <!-- 📸 Replace with <img src="bathroom.jpg"> -->
+      <div class="photo-ph"><div class="ico">🚿</div><div class="lbl">📸 Bathroom</div><div class="hint">Big shower</div></div>
+    </div>
+    <div class="gallery-item">
+      <!-- 📸 Replace with <img src="parking.jpg"> -->
+      <div class="photo-ph"><div class="ico">🌴</div><div class="lbl">📸 Miami Vibes</div><div class="hint">Street / Parking area</div></div>
+    </div>
+    <div class="gallery-item">
+      <!-- 📸 Replace with <img src="room-detail.jpg"> -->
+      <div class="photo-ph"><div class="ico">❄️</div><div class="lbl">📸 Room Detail</div><div class="hint">TV / A/C / Comfort</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     ROOMS
+============================================= -->
+<section class="section alt fade-in" id="rooms">
+  <div class="section-label">Room Options</div>
+  <h2>Choose your <em>stay.</em></h2>
+  <div class="rooms-grid">
+
+    <div class="room-card">
+      <div class="room-photo">
+        <!-- 📸 Replace .rph with <img src="room-2h.jpg"> -->
+        <div class="rph"><div class="ico">🛏️</div><div class="lbl">📸 Room photo</div></div>
+      </div>
+      <div class="room-body">
+        <div class="room-duration">2</div>
+        <div class="room-unit">Hour Stay</div>
+        <div class="room-name">Quick Rest</div>
+        <p class="room-desc">Clean room, hot shower, A/C. In and out — no hassle, no fuss.</p>
+        <ul class="room-features">
+          <li>Private room with A/C</li>
+          <li>Hot shower included</li>
+          <li>Freshly cleaned linen</li>
+          <li>Free parking</li>
+        </ul>
+        <div class="room-btns">
+          <a class="room-btn" href="tel:3056496770">📞 Call to Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card featured">
+      <div class="room-badge">Most Popular</div>
+      <div class="room-photo">
+        <!-- 📸 Replace .rph with <img src="room-4h.jpg"> -->
+        <div class="rph"><div class="ico">🛏️</div><div class="lbl">📸 Room photo</div></div>
+      </div>
+      <div class="room-body">
+        <div class="room-duration">4</div>
+        <div class="room-unit">Hour Stay</div>
+        <div class="room-name">Afternoon Reset</div>
+        <p class="room-desc">Half-day break. Relax, shower, sleep it off. The sweet spot.</p>
+        <ul class="room-features">
+          <li>Private room with A/C</li>
+          <li>Hot shower + big towels</li>
+          <li>Free Wi-Fi</li>
+          <li>Free parking</li>
+        </ul>
+        <div class="room-btns">
+          <a class="room-btn" href="tel:3056496770">📞 Call to Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-photo">
+        <!-- 📸 Replace .rph with <img src="room-overnight.jpg"> -->
+        <div class="rph"><div class="ico">🌙</div><div class="lbl">📸 Room photo</div></div>
+      </div>
+      <div class="room-body">
+        <div class="room-duration">8+</div>
+        <div class="room-unit">Overnight Stay</div>
+        <div class="room-name">Full Night</div>
+        <p class="room-desc">Clean sheets, solid A/C, free Wi-Fi. Sleep well, check out refreshed.</p>
+        <ul class="room-features">
+          <li>Full overnight stay</li>
+          <li>Clean sheets + towels</li>
+          <li>Free Wi-Fi included</li>
+          <li>Free parking</li>
+        </ul>
+        <div class="room-btns">
+          <a class="room-btn" href="tel:3056496770">📞 Call to Book</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================
+     BOOKING FORM
+============================================= -->
+<section class="booking-section fade-in" id="booking">
+  <div class="booking-inner">
+    <div class="booking-info">
+      <div class="section-label">Reserve Your Room</div>
+      <h2>Book <em>direct.</em><br>Best rate, always.</h2>
+      <p>Skip Booking.com and Expedia fees. Reserve directly with us and get the best price — no surprises, no hidden charges.</p>
+      <div class="direct-badge">🏆 Best Rate Guaranteed — Direct Booking</div>
+      <ul class="booking-perks">
+        <li><span>💰</span><div><strong>No platform fees</strong>What you see is what you pay</div></li>
+        <li><span>⚡</span><div><strong>Instant confirmation</strong>We'll call or text you back within minutes</div></li>
+        <li><span>🤝</span><div><strong>Flexible check-in</strong>Walk-in or pre-book — we're open 24/7</div></li>
+        <li><span>🗣️</span><div><strong>Bilingual staff</strong>English & Spanish always available</div></li>
+        <li><span>🚗</span><div><strong>Free parking</strong>Right at your door, no extra charge</div></li>
+      </ul>
+    </div>
+
+    <div class="booking-form-card">
+      <h3>Reserve a Room</h3>
+      <p class="form-sub">Fill in your details and we'll confirm your booking right away.</p>
+      <form id="bookingForm" onsubmit="submitBooking(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="305-000-0000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Room Type *</label>
+          <select required>
+            <option value="">— Select your stay —</option>
+            <option>2-Hour Stay</option>
+            <option>4-Hour Stay</option>
+            <option>Overnight Stay (8+ hours)</option>
+            <option>Not sure — help me choose</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Check-in Date</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>Approx. Check-in Time</label>
+            <input type="time">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message (optional)</label>
+          <textarea placeholder="Any special requests or questions?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">📅 Send Reservation Request</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✅</div>
+        <h4>Request Sent!</h4>
+        <p>We'll call or text you back shortly to confirm your room. Thank you for choosing Motel 77!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     PLATFORMS / OTA
+============================================= -->
+<section class="platforms-section fade-in">
+  <p>Also available on your favorite booking platforms</p>
+  <div class="platforms-grid">
+    <a href="https://www.booking.com/searchresults.en.html?ss=Motel+77+Miami" target="_blank" class="platform-btn booking">
+      <span class="platform-icon">🔵</span> Booking.com
+    </a>
+    <a href="https://www.expedia.com/Miami-Hotels.d178285.Travel-Guide-Hotels" target="_blank" class="platform-btn expedia">
+      <span class="platform-icon">✈️</span> Expedia
+    </a>
+    <a href="https://www.tripadvisor.com/Search?q=motel+77+miami" target="_blank" class="platform-btn tripadvisor">
+      <span class="platform-icon">🦉</span> TripAdvisor
+    </a>
+    <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" class="platform-btn google">
+      <span class="platform-icon">🗺️</span> Google Maps
+    </a>
+  </div>
+  <p class="platform-note">💡 Tip: Book directly with us for the best rate — no platform markup, no extra fees.</p>
+</section>
+
+<!-- =============================================
+     REVIEWS
+============================================= -->
+<section class="section fade-in" id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-label">Guest Reviews</div>
+      <h2>Straight from the <em>people.</em></h2>
+    </div>
+    <div class="overall-rating">
+      <div class="overall-score">4.0</div>
+      <div class="overall-stars">★★★★</div>
+      <div class="overall-count">Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">The customer service was really well — very clean and ready to go.</p>
+      <div class="review-author">Havian R.</div>
+      <div class="review-source">Google · 5 months ago</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">5-star service when you need it most. You want five-star in a budget spot — here it is.</p>
+      <div class="review-author">Terrence H.</div>
+      <div class="review-source">Google · Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★</div>
+      <p class="review-text">Very clean family-owned establishment. The lady who checked us in was adorable and extremely welcoming.</p>
+      <div class="review-author">Ash Belle</div>
+      <div class="review-source">Google</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★</div>
+      <p class="review-text">They were amazing late at night during an emergency. A room and a bed when you need it most.</p>
+      <div class="review-author">Ana Rosa</div>
+      <div class="review-source">Google · Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★</div>
+      <p class="review-text">Affordable and presentable rooms. Centrally located and nearby bus stops. Good value for money.</p>
+      <div class="review-author">Beatrice Z.</div>
+      <div class="review-source">Google · Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Is just good. Clean, fast, no problems. Exactly what you need.</p>
+      <div class="review-author">Daniel</div>
+      <div class="review-source">Google · Local Guide · 7 months ago</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     GUARANTEES
+============================================= -->
+<div class="guarantee-strip fade-in">
+  <div class="guarantee-item">
+    <span class="guarantee-icon">🏆</span>
+    <div class="guarantee-title">Best Rate Guarantee</div>
+    <p class="guarantee-desc">Book direct and always get our best price — no booking platform markup.</p>
+  </div>
+  <div class="guarantee-item">
+    <span class="guarantee-icon">🧹</span>
+    <div class="guarantee-title">Cleanliness Promise</div>
+    <p class="guarantee-desc">Every room is cleaned and inspected before you walk in. Every time.</p>
+  </div>
+  <div class="guarantee-item">
+    <span class="guarantee-icon">⚡</span>
+    <div class="guarantee-title">Instant Confirmation</div>
+    <p class="guarantee-desc">Call or text us — we confirm your room within minutes.</p>
+  </div>
+  <div class="guarantee-item">
+    <span class="guarantee-icon">🔒</span>
+    <div class="guarantee-title">Safe & Discreet</div>
+    <p class="guarantee-desc">Your privacy is always respected. No judgment, no questions.</p>
+  </div>
+</div>
+
+<!-- =============================================
+     AMENITIES
+============================================= -->
+<div class="amenities-bar fade-in">
+  <div class="amenity"><span class="amenity-icon">📶</span><div class="amenity-name">Free Wi-Fi</div></div>
+  <div class="amenity"><span class="amenity-icon">🚗</span><div class="amenity-name">Free Parking</div></div>
+  <div class="amenity"><span class="amenity-icon">❄️</span><div class="amenity-name">A/C Every Room</div></div>
+  <div class="amenity"><span class="amenity-icon">🚿</span><div class="amenity-name">Big Showers</div></div>
+  <div class="amenity"><span class="amenity-icon">🔒</span><div class="amenity-name">Safe & Discreet</div></div>
+  <div class="amenity"><span class="amenity-icon">🌙</span><div class="amenity-name">Open 24/7</div></div>
+  <div class="amenity"><span class="amenity-icon">💵</span><div class="amenity-name">Cash & Card</div></div>
+</div>
+
+<!-- =============================================
+     CTA BANNER
+============================================= -->
+<section class="cta-banner fade-in">
+  <h2 style="color:white;">Ready for your <em style="color:var(--gold);">stay?</em></h2>
+  <p>Don't wait — rooms fill up fast. Call us or walk right in. We're open 24 hours, 7 days a week.</p>
+  <div class="btn-group">
+    <a href="tel:3056496770" class="btn-white">📞 Call 305-649-6770</a>
+    <a href="#booking" class="btn-white" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.5);">📅 Fill the Form</a>
+  </div>
+</section>
+
+<!-- =============================================
+     LOCATION
+============================================= -->
+<section class="location-section fade-in" id="location">
+  <div>
+    <div class="section-label">Find Us</div>
+    <h2>Right in the <em>heart</em> of Miami.</h2>
+    <ul class="info-list">
+      <li><span>📞</span><div><strong>305-649-6770</strong>Call anytime — we always pick up, 24/7</div></li>
+      <li><span>📍</span><div><strong>3021 SW 8th Street, Miami FL 33135</strong>Near Home Depot · Bus stop at the corner · QQ84+5H</div></li>
+      <li><span>🕐</span><div><strong>Open 24 Hours — 7 Days a Week</strong>Walk-ins always welcome, no appointment needed</div></li>
+      <li><span>🗣️</span><div><strong>English & Spanish Spoken</strong>Hablamos español con mucho gusto</div></li>
+      <li><span>💵</span><div><strong>Cash & Card Accepted</strong>No booking fees, no hidden charges, no surprises</div></li>
+    </ul>
+    <div class="location-ctas">
+      <a href="tel:3056496770" class="btn-primary">📞 Call Now</a>
+      <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" class="btn-outline-navy">🗺️ Get Directions</a>
+    </div>
+  </div>
+
+  <div>
+    <!-- 📸 Replace .lph with <img src="exterior-sign.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+    <div class="location-photo">
+      <div class="lph">
+        <div class="ico">📸</div>
+        <div class="lbl">Exterior Photo</div>
+        <div class="hint">Replace with photo of sign<br>or façade from street</div>
+      </div>
+    </div>
+    <div class="map-embed">
+      <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank">🗺️ Open in Google Maps</a>
+      <span class="map-hint">3021 SW 8th Street, Miami FL 33135</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CONTACT SECTION
+============================================= -->
+<section class="contact-section fade-in" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Get in Touch</div>
+      <h2>We're always <em>here.</em></h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:8px;">Have a question? Want to check availability? Reach us any way you prefer — we're open 24 hours.</p>
+      <div class="contact-cards">
+        <a href="tel:3056496770" class="contact-card call-card">
+          <div class="cc-icon coral">📞</div>
+          <div class="cc-text">
+            <strong>Call Us</strong>
+            <span>305-649-6770 · Open 24/7</span>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+        <a href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" class="contact-card">
+          <div class="cc-icon teal">📍</div>
+          <div class="cc-text">
+            <strong>Visit Us</strong>
+            <span>3021 SW 8th St, Miami FL 33135</span>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+        <a href="https://www.google.com/maps/place/Motel+77" target="_blank" class="contact-card">
+          <div class="cc-icon gold">⭐</div>
+          <div class="cc-text">
+            <strong>Leave a Review</strong>
+            <span>Share your experience on Google</span>
+          </div>
+          <span class="cc-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h3>Send a Message</h3>
+      <p class="cf-sub">We'll get back to you by phone within the hour.</p>
+      <form onsubmit="submitContact(event)">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" placeholder="First & Last Name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="305-000-0000" required>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option>Room availability</option>
+              <option>Pricing inquiry</option>
+              <option>Group booking</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea placeholder="How can we help you?" required style="min-height:120px;"></textarea>
+        </div>
+        <button type="submit" class="cf-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo">Motel 77</div>
+      <div class="footer-tagline">"Clean room. Fair price. No drama."<br>Miami's most honest stay since day one.</div>
+      <a class="footer-phone-big" href="tel:3056496770">305-649-6770</a>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.google.com/maps/place/Motel+77/@25.7654494,-80.2435107,17z" target="_blank" title="Google Maps">🗺️</a>
+        <a class="social-btn" href="#" title="Facebook">📘</a>
+        <a class="social-btn" href="#" title="Instagram">📸</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Stay Options</h4>
+      <ul>
+        <li><a href="#rooms"><strong>2-Hour Stay</strong>Quick rest, anytime</a></li>
+        <li><a href="#rooms"><strong>4-Hour Stay</strong>Afternoon reset</a></li>
+        <li><a href="#rooms"><strong>Overnight Stay</strong>Full night, fresh start</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#booking">Book Now</a></li>
+        <li><a href="#reviews">Guest Reviews</a></li>
+        <li><a href="#location">Location & Map</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Amenities</h4>
+      <ul>
+        <li>📶 Free Wi-Fi</li>
+        <li>🚗 Free Parking</li>
+        <li>❄️ Air Conditioning</li>
+        <li>🚿 Big Hot Showers</li>
+        <li>🌙 Open 24/7</li>
+        <li>🗣️ English & Español</li>
+        <li>💵 Cash & Card OK</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Motel 77 · 3021 SW 8th Street, Miami FL 33135 · Family Owned & Operated · All rights reserved</div>
+    <div class="footer-links">
+      <a href="#booking">Book Now</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.google.com/maps/place/Motel+77" target="_blank">Google Maps</a>
+    </div>
+    <div class="open-badge">● Open 24 Hours</div>
+  </div>
+</footer>
+
+<!-- =============================================
+     FLOATING BUTTONS
+============================================= -->
+<a class="float-call" href="tel:3056496770" title="Call Now">📞</a>
+
+<!-- =============================================
+     SCRIPTS
+============================================= -->
+<script>
+  // Scroll fade-in
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+  }
+
+  // Nav active link on scroll
+  const sections = document.querySelectorAll('section[id], div[id="top"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current || (current === 'top' && a.getAttribute('href') === '#top')) {
+        a.classList.add('active');
+      }
+    });
+  });
+
+  // Booking form submission
+  function submitBooking(e) {
+    e.preventDefault();
+    const form = document.getElementById('bookingForm');
+    const success = document.getElementById('formSuccess');
+    form.style.display = 'none';
+    success.style.display = 'block';
+    // In production: send data to backend / FormSubmit / Netlify Forms etc.
+  }
+
+  // Contact form submission
+  function submitContact(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✅ Message Sent! We\'ll call you shortly.';
+    btn.style.background = 'var(--teal)';
+    btn.disabled = true;
+    e.target.reset();
+  }
+
+  // Set date input min to today
+  const dateInputs = document.querySelectorAll('input[type="date"]');
+  const today = new Date().toISOString().split('T')[0];
+  dateInputs.forEach(d => d.setAttribute('min', today));
+</script>
+</body>
+</html>
